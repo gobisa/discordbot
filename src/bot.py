@@ -1,5 +1,6 @@
 import os
 import logging
+from datetime import datetime
 
 import discord
 from discord.ext import commands
@@ -27,6 +28,11 @@ async def ping(ctx):
 @bot.command(name="bing")
 async def bing(ctx):
     await ctx.send("bong")
+
+@bot.command(name="day")
+async def day(ctx):
+    response = "It is " + datetime.today().strftime("%A")
+    await ctx.send(response)
 
 @bot.command()
 async def add(ctx, a, b):
