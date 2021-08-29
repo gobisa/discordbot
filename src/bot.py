@@ -29,6 +29,10 @@ async def ping(ctx):
 async def bing(ctx):
     await ctx.send("bong")
 
+@bot.command(name="ding")
+async def dong(ctx):
+    await ctx.send("8====D")
+
 @bot.command(name="day")
 async def day(ctx):
     response = "It is " + datetime.today().strftime("%A")
