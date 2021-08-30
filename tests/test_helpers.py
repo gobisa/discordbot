@@ -18,12 +18,3 @@ def create_mock_ctx(mockSend):
     mockObj = MockCtx()
     mockObj.send = make_coroutine(mockSend)
     return mockObj
-
-class NewDate(datetime.date):
-    @classmethod
-    def today(cls):
-        return cls(2021, 8, 29)
-
-def mock_datetime():
-    datetime.date = NewDate
-

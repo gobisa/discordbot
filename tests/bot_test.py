@@ -1,5 +1,5 @@
 import datetime as dt
-from tests.test_helpers import create_mock_ctx, mock_datetime
+from tests.test_helpers import create_mock_ctx
 
 import unittest
 from unittest import mock
@@ -29,11 +29,12 @@ class TestApp(aiounittest.AsyncTestCase):
         mockSend.assert_called_once_with("pong")
     
     async def test_day(self):
-        mock_datetime()
-        mockSend = mock.MagicMock()
-        ctx = create_mock_ctx(mockSend)
-        await bot.day(ctx)
-        mockSend.assert_called_once_with("It is Sunday")
+        with mock.patch('bot.datetime') as mock_date:
+            mock_date.today.return_value = dt.datetime(2021, 8, 30)
+            mockSend = mock.MagicMock()
+            ctx = create_mock_ctx(mockSend)
+            await bot.day(ctx)
+            mockSend.assert_called_once_with("It is Monday")
 
     async def test_add_basic(self):
         mockSend = mock.MagicMock()
