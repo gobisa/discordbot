@@ -4,7 +4,7 @@ from tests.test_helpers import MockCtx
 import unittest
 from unittest import mock
 import aiounittest
-from commands import Commands
+from simple_commands import SimpleCommands
 import bot
 
 class TestSmoketest(unittest.TestCase):
@@ -20,27 +20,27 @@ class TestApp(aiounittest.AsyncTestCase):
     async def test_bing(self):
         mockSend = mock.Mock()
         ctx = MockCtx(mockSend)
-        await Commands.bing(ctx)
+        await SimpleCommands.bing(ctx)
         mockSend.assert_called_once_with("bong")
 
     async def test_ping(self):
         mockSend = mock.Mock()
         ctx = MockCtx(mockSend)
-        await Commands.ping(ctx)
+        await SimpleCommands.ping(ctx)
         mockSend.assert_called_once_with("pong")
     
     async def test_day(self):
-        with mock.patch('commands.datetime') as mock_date:
+        with mock.patch('simple_commands.datetime') as mock_date:
             mock_date.today.return_value = dt.datetime(2021, 8, 30)
             mockSend = mock.Mock()
             ctx = MockCtx(mockSend)
-            await Commands.day(ctx)
+            await SimpleCommands.day(ctx)
             mockSend.assert_called_once_with("It is Monday")
 
     async def test_add(self):
         mockSend = mock.Mock()
         ctx = MockCtx(mockSend)
-        await Commands.add(ctx, "7", "8")
+        await SimpleCommands.add(ctx, "7", "8")
         mockSend.assert_called_once_with("78")
 
 

@@ -1,7 +1,7 @@
 from datetime import datetime
 from discord.ext import commands
 
-class Commands():
+class SimpleCommands():
     def __init__(self, bot):
         self.bot = bot
 
@@ -24,4 +24,4 @@ class Commands():
         await ctx.send(a + b)
 
 def setup(bot):
-    bot.add_cog(Commands(bot))
+    bot.add_cog(SimpleCommands(bot))

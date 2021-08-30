@@ -7,7 +7,7 @@ from discord.ext import commands
 TOKEN = os.getenv("DISCORD_TOKEN")
 
 command_classes = [
-    "commands",
+    "simple_commands",
     ]
 
 LOG = logging.getLogger('discordbot')
