@@ -1,9 +1,10 @@
 import os
 import logging
-from datetime import datetime
 
 import discord
 from discord.ext import commands
+
+from commands import registerCommands
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 
@@ -21,26 +22,9 @@ bot = commands.Bot(command_prefix="!")
 async def on_ready():
     print(f"Logged in as {bot.user.name}({bot.user.id})")
 
-@bot.command(name="ping")
-async def ping(ctx):
-    await ctx.send("pong")
-
-@bot.command(name="bing")
-async def bing(ctx):
-    await ctx.send("bong")
-
-@bot.command(name="day")
-async def day(ctx):
-    response = "It is " + datetime.today().strftime("%A")
-    await ctx.send(response)
-
-@bot.command()
-async def add(ctx, a, b):
-    # called as "!add arg1 arg2"
-    await ctx.send(a + b)
-
 if __name__ == "__main__":
     print("bot starting")
+    registerCommands(bot)
     bot.run(TOKEN)
 
 
