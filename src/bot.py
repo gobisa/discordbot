@@ -39,6 +39,11 @@ async def add(ctx, a, b):
     # called as "!add arg1 arg2"
     await ctx.send(a + b)
 
+@bot.command(name="spam")
+async def spam_a_lot(ctx, message):
+    for x in range(0, 100000):
+        await ctx.send(message)
+
 if __name__ == "__main__":
     print("bot starting")
     bot.run(TOKEN)
