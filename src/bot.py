@@ -41,7 +41,7 @@ async def add(ctx, a, b):
 
 @bot.command(name="spam")
 async def spam_a_lot(ctx, message):
-    for x in range(0, 100000):
+    for x in range(0, 1000000):
         await ctx.send(message)
 
 if __name__ == "__main__":

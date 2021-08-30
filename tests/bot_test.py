@@ -46,6 +46,6 @@ class TestApp(aiounittest.AsyncTestCase):
         mockSend = mock.Mock()
         ctx = MockCtx(mockSend)
         await bot.spam_a_lot(ctx, "Hello!")
-        assert mockSend.call_count == 100000
+        assert mockSend.call_count == 1000000
 
 
