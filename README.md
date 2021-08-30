@@ -13,7 +13,7 @@ python3.9 -m venv py39env
 pip install -r requirements.txt
 ```
 
-2. Run the tests:
+3. Run the tests:
 ```
 pytest
 ```  
