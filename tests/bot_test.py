@@ -36,15 +36,10 @@ class TestApp(aiounittest.AsyncTestCase):
             await bot.day(ctx)
             mockSend.assert_called_once_with("It is Monday")
 
-    async def test_add_basic(self):
+    async def test_add(self):
         mockSend = mock.Mock()
         ctx = MockCtx(mockSend)
-        await bot.add(ctx, 7, 8)
-        mockSend.assert_called_once_with(15)
-    
-    async def test_add_negative(self):
-        mockSend = mock.Mock()
-        ctx = MockCtx(mockSend)
-        await bot.add(ctx, -9, 8)
-        mockSend.assert_called_once_with(-1)
+        await bot.add(ctx, "7", "8")
+        mockSend.assert_called_once_with("78")
+
 
