@@ -1,6 +1,6 @@
 import os
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import discord
 from discord.ext import commands
@@ -31,7 +31,7 @@ async def bing(ctx):
 
 @bot.command(name="day")
 async def day(ctx):
-    day = datetime.today().strftime("%A")
+    day = (datetime.today() - timedelta(days=1)).strftime("%A")
     if day == "Wednesday":
         day += " my dudes"
     response = "It is " + day
