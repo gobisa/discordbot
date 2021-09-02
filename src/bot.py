@@ -31,7 +31,10 @@ async def bing(ctx):
 
 @bot.command(name="day")
 async def day(ctx):
-    response = "It is " + datetime.today().strftime("%A")
+    day = datetime.today().strftime("%A")
+    if day == "Wednesday":
+        day += " my dudes"
+    response = "It is " + day
     await ctx.send(response)
 
 @bot.command()
