@@ -1,6 +1,7 @@
 import os
 import logging
 from datetime import datetime
+from pytz import timezone
 
 import discord
 from discord.ext import commands
@@ -31,7 +32,8 @@ async def bing(ctx):
 
 @bot.command(name="day")
 async def day(ctx):
-    day = datetime.today().strftime("%A")
+    EST = timezone("US/Eastern")
+    day = datetime.now(EST).strftime("%A")
     if day == "Wednesday":
         day += " my dudes"
     response = "It is " + day

@@ -30,7 +30,7 @@ class TestApp(aiounittest.AsyncTestCase):
     
     async def test_day(self):
         with mock.patch('bot.datetime') as mock_date:
-            mock_date.today.return_value = dt.datetime(2021, 8, 30)
+            mock_date.now.return_value = dt.datetime(2021, 8, 30, 1, 1, 1)
             mockSend = mock.Mock()
             ctx = MockCtx(mockSend)
             await bot.day(ctx)
