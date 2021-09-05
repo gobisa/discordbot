@@ -29,6 +29,10 @@ async def ping(ctx):
 @bot.command(name="bing")
 async def bing(ctx):
     await ctx.send("bong")
+    
+@bot.command(name="nitro")
+async def nitro(ctx):
+    await ctx.send("Your subscriptions will automatically renew on Sep 22, 2021 and you'll be charged $9.99.")
 
 @bot.command(name="day")
 async def day(ctx):
