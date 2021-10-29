@@ -2,3 +2,4 @@ discord.py
 pytest
 aiounittest
 pytz
+discord-py-interactions

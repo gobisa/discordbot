@@ -4,7 +4,10 @@ from datetime import datetime
 from pytz import timezone
 
 import discord
+from discord import Client, Intents, Embed
 from discord.ext import commands
+
+from discord_slash import SlashCommand, SlashContext
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 
@@ -16,7 +19,8 @@ H.setFormatter(FMT)
 LOG.addHandler(H)
 
 # https://discordpy.readthedocs.io/en/stable/ext/commands/commands.html
-bot = commands.Bot(command_prefix="!")
+bot = commands.Bot(command_prefix="!", intents=Intents.default())
+slash = SlashCommand(bot)
 
 @bot.event
 async def on_ready():
@@ -47,6 +51,13 @@ async def day(ctx):
 async def add(ctx, a, b):
     # called as "!add arg1 arg2"
     await ctx.send(a + b)
+
+# https://github.com/goverfl0w/discord-interactions
+# test command, feel free to delete once we have a real slash command
+@slash.slash(name="slash")
+async def slash(ctx: SlashContext):
+    embed = Embed(title="Embed slash")
+    await ctx.send(embed=embed)
 
 if __name__ == "__main__":
     print("bot starting")
