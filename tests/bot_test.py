@@ -42,4 +42,12 @@ class TestApp(aiounittest.AsyncTestCase):
         await bot.add(ctx, "7", "8")
         mockSend.assert_called_once_with("78")
 
+class TestSlashCommands(aiounittest.AsyncTestCase):
+
+    async def test_slash_basic(self):
+        mockSend = mock.Mock()
+        ctx = MockCtx(mockSend)
+        await bot.first.invoke(ctx)
+        mockSend.assert_called_once()
+
 
